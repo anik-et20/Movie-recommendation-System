@@ -14,7 +14,8 @@ API_KEY = os.getenv("TMDB_API_KEY")
 import gdown
 
 if not os.path.exists("similarity.pkl"):
-    url = "https://drive.google.com/file/d/1UiS8_1EusgWUmA2WzWnj-o1vApj2AYdl/view?usp=drive_link"
+    file_id = "1UiS8_1EusgWUmA2WzWnj-o1VApj2AYdl"
+    url = f"https://drive.google.com/uc?id={file_id}"
     gdown.download(url, "similarity.pkl", quiet=False)
 
 # ---------------- PAGE CONFIG ---------------- #
