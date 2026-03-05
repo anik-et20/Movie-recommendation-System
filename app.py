@@ -4,6 +4,7 @@ import pandas as pd
 import requests
 import urllib.parse
 import re
+import numpy
 import time
 from dotenv import load_dotenv
 import os
@@ -93,18 +94,21 @@ def fetch_poster(movie_name):
     # DO NOT cache broken responses
     return "https://via.placeholder.com/500x750?text=No+Poster"
 
+import numpy as np
+
 def recommend(movie):
     index = movies[movies['title'] == movie].index[0]
-    distances = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda x: x[1])
+
+    distances = similarity[index]
+    movie_indices = np.argsort(distances)[::-1][1:6]
 
     recommended_names = []
     recommended_posters = []
 
-    for i in distances[1:6]:
-        movie_name = movies.iloc[i[0]].title
+    for i in movie_indices:
+        movie_name = movies.iloc[i].title
         recommended_names.append(movie_name)
         recommended_posters.append(fetch_poster(movie_name))
-        time.sleep(0.15)
 
     return recommended_names, recommended_posters
 
