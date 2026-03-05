@@ -16,8 +16,8 @@ import gdown
 # if os.path.exists("similarity.pkl"):
 #     os.remove("similarity.pkl")
   
-url = f"https://drive.google.com/uc?id={file_id}"
-gdown.download(url, "similarity.pkl", quiet=False, fuzzy=True)
+url = "https://drive.google.com/uc?id=1UiS8_1EusgWUmA2WzWnj-o1VApj2AYdI"
+gdown.download(url, "similarity.pkl", quiet=False)
 
 # ---------------- PAGE CONFIG ---------------- #
 st.set_page_config(
