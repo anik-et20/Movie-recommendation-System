@@ -12,12 +12,12 @@ load_dotenv()
 API_KEY = os.getenv("TMDB_API_KEY")
 
 import gdown
-# file_id = "1UiS8_1EusgWUmA2WzWnj-o1VApj2AYdl"
-# if os.path.exists("similarity.pkl"):
-#     os.remove("similarity.pkl")
-  
-url = "https://drive.google.com/uc?id=1UiS8_1EusgWUmA2WzWnj-o1VApj2AYdI"
-gdown.download(url, "similarity.pkl", quiet=False)
+
+file_id = "1UiS8_1EusgWUmA2WzWnj-o1VApj2AYdI"
+url = f"https://drive.google.com/uc?id={file_id}"
+
+if not os.path.exists("similarity.pkl"):
+    gdown.download(url, "similarity.pkl", quiet=False)
 
 # ---------------- PAGE CONFIG ---------------- #
 st.set_page_config(
